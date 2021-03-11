@@ -1,0 +1,24 @@
+<%= form_with model:@book, local: true do |b| %>
+  <% if flash[:notice]%>
+  <p id="notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if @book.errors.any? %>
+    <h3>error</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<h1>Editing Book</h1>
+
+  <h4>Titile</h4>
+  <%= b.text_field :title%>
+  <h4>Body</h4>
+  <%= b.text_area :body%>
+  <p>
+    <%= b.submit 'Update Book'%>
+  </p>
+  <%= link_to "Show",book_path %> | <%= link_to "Back", ("/books") %>
+<% end %>
+
